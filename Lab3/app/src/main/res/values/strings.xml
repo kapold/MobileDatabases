@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LW3_DB</string>
+    <string name="filesDir_Btn">GET_FILES_DIR</string>
+    <string name="cacheDir_Btn">GET_CACHE_DIR</string>
+    <string name="externalFilesDir_Btn">GET_EXTERNAL_FILES_DIR</string>
+    <string name="externalCacheDir_Btn">GET_EXTERNAL_CACHE_DIR</string>
+    <string name="externalStorageDirectory_Btn">GET_EXTERNAL_STORAGE_DIRECTORY</string>
+    <string name="storageExternalPublicStorageDirectory_Btn">GET_EXTERNAL_PUBLIC_STORAGE_DIRECTORY</string>
+</resources>
