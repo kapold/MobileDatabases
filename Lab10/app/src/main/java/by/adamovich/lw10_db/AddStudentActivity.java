@@ -41,7 +41,10 @@ public class AddStudentActivity extends AppCompatActivity {
             }
             Student student = new Student();
             student.name = name_et.getText().toString();
+            String groupName = groupsSpinner.getSelectedItem().toString();
+            student.idGroup = dbHandler.getGroupID(groupName);
 
+            dbHandler.addStudent(student);
             Toast.makeText(this, "Студент добавлен", Toast.LENGTH_SHORT).show();
             name_et.setText("");
         }

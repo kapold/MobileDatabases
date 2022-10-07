@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="12dp"
+    tools:layout_editor_absoluteY="-1dp">
+
+    <Button
+        android:id="@+id/addHeadBTN"
+        android:layout_width="264dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="164dp"
+        android:onClick="AddHead_Btn"
+        android:text="Назначить"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headTV"
+        android:layout_width="246dp"
+        android:layout_height="42dp"
+
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="32dp"
+        android:text="Староста"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/headSpinner"
+        android:layout_width="268dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

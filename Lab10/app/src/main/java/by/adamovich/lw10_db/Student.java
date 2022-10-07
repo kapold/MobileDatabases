@@ -16,8 +16,13 @@ public class Student {
     @Override
     public String toString()
     {
-        return String.format("Студент [%s]\n" +
-                "\tGroupID: %s\n" +
-                "\tStudentID: %s\n");
+        return String.format("%s\n", name);
+    }
+
+    public String getInfo()
+    {
+        return String.format("\t%s\n" +
+                "\t\t\t* GroupID: %s\n" +
+                "\t\t\t* StudentID: %s\n", name, idGroup, idStudent);
     }
 }

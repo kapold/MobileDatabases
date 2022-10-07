@@ -14,6 +14,7 @@
         tools:targetApi="31">
         <activity android:name=".AddStudentActivity" android:exported="false"/>
         <activity android:name=".AddGroupActivity" android:exported="false"/>
+        <activity android:name=".AddHeadActivity" android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

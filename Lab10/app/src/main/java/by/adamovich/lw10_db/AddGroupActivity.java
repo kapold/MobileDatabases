@@ -24,14 +24,11 @@ public class AddGroupActivity extends AppCompatActivity {
         groupName_et = findViewById(R.id.addGroupNameET);
         faculty_et = findViewById(R.id.addGroupFacultyET);
         course_et = findViewById(R.id.addGroupCourseET);
-        headSpinner = findViewById(R.id.headSpinner);
         group = new Group();
     }
     EditText groupName_et, faculty_et, course_et;
-    Spinner headSpinner;
     Group group;
     DbHandler dbHandler;
-    ArrayAdapter<String> adapter;
 
     public void AddHeadToGroup_Btn(View view)
     {
@@ -41,28 +38,25 @@ public class AddGroupActivity extends AppCompatActivity {
                 return;
             }
 
+            Intent headIntent = new Intent(this, AddHeadActivity.class);
+            headIntent.putExtra("headName", groupName_et.getText().toString());
+            headIntent.putExtra("groupID", String.valueOf(dbHandler.getGroupID(groupName_et.getText().toString())));
+            startActivity(headIntent);
+            this.finish();
         }
         catch (Exception ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void RefreshSpinner_Btn(View view)
+    public void DeleteGroup_Btn(View view)
     {
         try {
-            if (groupName_et.getText().toString().isEmpty()){
-                Toast.makeText(this, "Введите наименование группы", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            List<String> heads = dbHandler.getHeads(groupName_et.getText().toString());
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, heads);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            headSpinner.setAdapter(adapter);
-
-            Toast.makeText(this, "Спиннер обновлен", Toast.LENGTH_SHORT).show();
+            dbHandler.deleteGroup(groupName_et.getText().toString());
+            Toast.makeText(this, "Группа удалена!", Toast.LENGTH_SHORT).show();
+            groupName_et.setText("");
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

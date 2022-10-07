@@ -94,9 +94,13 @@ public class CurrentTasksActivity extends AppCompatActivity {
 
     private void loadData(){
         List<Taska> TaskList = new ArrayList<>();
+        List<Taska> tl = new ArrayList<>();
         try {
             XmlSerializator xml = new XmlSerializator();
             TaskList = xml.DeserializeFromXml(this);
+
+            tl = xml.DeserializeFromXml_XPath(this, category);
+            Toast.makeText(this, "Попытка ХПаза", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -109,7 +113,7 @@ public class CurrentTasksActivity extends AppCompatActivity {
             if(task.date.equals(date) && task.category.equals(category))
                 CurrentTasksList.add(task);
 
-        ArrayAdapter<Taska> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, CurrentTasksList);
+        ArrayAdapter<Taska> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tl);
         listView.setAdapter(adapter);
     }
 

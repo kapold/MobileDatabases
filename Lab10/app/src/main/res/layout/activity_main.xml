@@ -45,8 +45,8 @@
 
     <Spinner
         android:id="@+id/courseSpinner"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
+        android:layout_width="164dp"
+        android:layout_height="49dp"
         android:layout_marginStart="212dp"
         android:layout_marginTop="128dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
 
     <ListView
         android:id="@+id/dataLV"
-        android:layout_width="412dp"
-        android:layout_height="535dp"
+        android:layout_width="400dp"
+        android:layout_height="530dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
