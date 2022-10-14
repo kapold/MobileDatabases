@@ -20,7 +20,6 @@ public class DbHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME_STUDENTS = "Students";
     private static final String TABLE_NAME_GROUPS = "Groups";
 
-
     // Groups
     private static final String ID_GROUP_COL = "ID_Group";
     private static final String FACULTY_COL = "Faculty";
@@ -43,14 +42,13 @@ public class DbHandler extends SQLiteOpenHelper {
                 + FACULTY_COL + " TEXT,"
                 + COURSE_COL + " INTEGER,"
                 + NAME_COL + " TEXT UNIQUE,"
-                + HEAD_COL + " TEXT,"
-                + " CONSTRAINT groupConstr FOREIGN KEY(head) REFERENCES Students(name))";
+                + HEAD_COL + " TEXT)";
 
         String query_students = "CREATE TABLE " + TABLE_NAME_STUDENTS + " ("
                 + ID_GROUP_COL + " INTEGER , "
                 + ID_STUDENT_COL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_COL + " TEXT,"
-                + " CONSTRAINT studentConstr FOREIGN KEY (ID_Group) REFERENCES Groups (ID_Group) ON DELETE CASCADE )";
+                + " CONSTRAINT studentConstr FOREIGN KEY (ID_Group) REFERENCES Groups(ID_Group) ON DELETE CASCADE )";
 
         db.execSQL(query_groups);
         db.execSQL(query_students);
@@ -61,6 +59,13 @@ public class DbHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_GROUPS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_STUDENTS);
         onCreate(db);
+    }
+
+    @Override
+    public void onConfigure(SQLiteDatabase db)
+    {
+        super.onConfigure(db);
+        db.execSQL("PRAGMA foreign_keys = ON");
     }
 
     public void addGroup(Group group)
@@ -215,9 +220,15 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public void deleteGroup(String groupName)
     {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME_GROUPS, "name=?", new String[]{ groupName });
-        db.close();
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete(TABLE_NAME_GROUPS, "name=?", new String[]{ groupName });
+            db.close();
+        }
+        catch (Exception ex)
+        {
+            Log.d("deleteGroup(): ", ex.getMessage());
+        }
     }
 
 //    public void changeTimetables(String savedID, String ttName, String ttDayOfWeek, String ttWeek, String ttAudience,

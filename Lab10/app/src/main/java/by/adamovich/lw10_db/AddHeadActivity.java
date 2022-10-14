@@ -28,7 +28,6 @@ public class AddHeadActivity extends AppCompatActivity {
         savedID = Integer.parseInt(intent.getStringExtra("groupID"));
 
         allStudents = dbHandler.getStudents();
-        Toast.makeText(this, String.valueOf(savedID), Toast.LENGTH_SHORT).show();
         List<Student> neededStudents = new ArrayList<>();
         for (Student student: allStudents)
             if (student.idGroup == savedID)
