@@ -1,4 +1,4 @@
-package com.example.lw8_db;
+package by.bstu.bdlab8;
 
 import org.junit.Test;
 

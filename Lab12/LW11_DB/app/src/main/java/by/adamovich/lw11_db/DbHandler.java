@@ -181,10 +181,16 @@ public class DbHandler extends SQLiteOpenHelper {
                 "    select RAISE (FAIL , 'Количество студентов в группе < 3');\n" +
                 "END;";
         db.execSQL(tr_banStudentDelete);
-        String tr_update_Groups = "CREATE TRIGGER IF NOT EXISTS tr_update_Groups\n" +
-                "AFTER INSERT ON Groups\n" +
+
+        String head_VIEW = "CREATE VIEW head_VIEW AS\n" +
+                "    SELECT groupID, head\n" +
+                "    FROM Groups\n" +
+                "    INNER JOIN Students S USING (groupID);";
+        db.execSQL(head_VIEW);
+        String tr_update_Groups = "CREATE TRIGGER IF NOT EXISTS tr_insert_Groups\n" +
+                "INSTEAD OF UPDATE ON head_VIEW\n" +
                 "BEGIN\n" +
-                "    UPDATE Groups SET head = 'unknown' WHERE head is null;\n" +
+                "    UPDATE Groups SET head = new.head WHERE groupID = old.groupID;\n" +
                 "END;";
         db.execSQL(tr_update_Groups);
     }
