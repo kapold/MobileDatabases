@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'by.adamovich.lw17_db'
+    namespace 'by.bstu.lw17'
     compileSdk 32
 
     defaultConfig {
-        applicationId "by.adamovich.lw17_db"
+        applicationId "by.bstu.lw17"
         minSdk 30
         targetSdk 32
         versionCode 1
@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-
+    implementation 'org.postgresql:postgresql:42.2.5'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

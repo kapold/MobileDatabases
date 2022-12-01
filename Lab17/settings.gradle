@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "LW17_DB"
+rootProject.name = "LW17"
 include ':app'

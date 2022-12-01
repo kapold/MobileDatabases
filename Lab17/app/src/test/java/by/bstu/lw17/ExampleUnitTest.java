@@ -1,4 +1,4 @@
-package by.adamovich.lw17_db;
+package by.bstu.lw17;
 
 import org.junit.Test;
 
